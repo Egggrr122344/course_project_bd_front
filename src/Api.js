@@ -124,13 +124,14 @@ export const createBooking = async (bookingData) => {
         // Попробуем разобрать JSON с ошибкой, если он есть
         const errorData = await response.json().catch(() => null);
         if (errorData && errorData.error) {
-            throw new Error(errorData.error);
+            throw new Error(errorData.error); // Пробрасываем сообщение из ответа
         }
-        throw new Error("Ошибка сети или сервера. Проверьте соединение.");
+        throw new Error("Ошибка сети или сервера. Проверьте соединение."); // Общая ошибка
     }
 
-    return response.json();
+    return response.json(); // Возвращаем успешный ответ
 };
+
 
 
 export async function getCustomer(userId) {

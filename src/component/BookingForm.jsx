@@ -64,20 +64,19 @@ const BookingForm = ({ userId }) => {
         };
 
         try {
-            console.log(bookingData)
-            const response = await createBooking(bookingData);
+            console.log(bookingData); // Логируем данные бронирования
+            const response = await createBooking(bookingData); // Вызываем функцию
 
-            if (response.error) {
-                alert(`Ошибка: ${response.error}`);
-            } else if (response.message) {
-                alert(response.message);
+            if (response.message) {
+                alert(response.message); // Сообщение об успешном создании
             } else {
-                alert("Неизвестный ответ сервера. Проверьте данные.");
+                alert("Неизвестный ответ сервера. Проверьте данные."); // Если вдруг нет message
             }
         } catch (error) {
             console.error("Ошибка при создании бронирования:", error.message);
-            alert("Произошла ошибка при создании бронирования. Попробуйте позже.");
+            alert(`Ошибка: ${error.message}`); // Выводим сообщение об ошибке из сервера
         }
+
     };
 
     if (loading) {
