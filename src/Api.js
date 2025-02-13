@@ -1,5 +1,4 @@
 const API_URL = "http://localhost:8080/api";
-
 // Регистрация пользователя
 export async function signUp(username, fullName, password, role) {
     const response = await fetch(`${API_URL}/auth/sign-up`, {
